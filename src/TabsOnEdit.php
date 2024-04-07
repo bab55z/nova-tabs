@@ -43,7 +43,7 @@ trait TabsOnEdit
      * @param NovaRequest $request
      * @param $model
      */
-    public static function fillForUpdate(NovaRequest $request, $model)
+    public static function fillForUpdate(NovaRequest $request, $model): array
     {
         return static::fillFields(
             $request,
@@ -72,7 +72,7 @@ trait TabsOnEdit
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return \Laravel\Nova\Fields\FieldCollection
      */
-    public function updateFieldsWithoutReadonly(NovaRequest $request)
+    public function updateFieldsWithoutReadonly(NovaRequest $request): FieldCollection
     {
         return $this->parentUpdateFields($request)
                     ->reject(function ($field) use ($request) {
@@ -83,7 +83,7 @@ trait TabsOnEdit
     /**
      * @param NovaRequest $request
      */
-    public function parentCreationFields(NovaRequest $request)
+    public function parentCreationFields(NovaRequest $request): FieldCollection
     {
         return parent::creationFields($request);
     }
@@ -132,7 +132,7 @@ trait TabsOnEdit
      * @param  \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return \Laravel\Nova\Fields\FieldCollection
      */
-    public function updateFields(NovaRequest $request)
+    public function updateFields(NovaRequest $request): \Laravel\Nova\Fields\FieldCollection
     {
         return new TabsFieldCollection(
             $this->assignTabPanels(
