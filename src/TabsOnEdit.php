@@ -18,7 +18,7 @@ trait TabsOnEdit
      * @param  \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return \Laravel\Nova\Fields\FieldCollection
      */
-    public function creationFields(NovaRequest $request)
+    public function creationFields(NovaRequest $request): FieldCollection
     {
         return $this->assignTabPanels($this->removeNonCreationFields($request, $this->resolveFields($request)));
     }
@@ -30,7 +30,7 @@ trait TabsOnEdit
      * @param  \Illuminate\Database\Eloquent\Model     $model
      * @return array
      */
-    public static function fill(NovaRequest $request, $model)
+    public static function fill(NovaRequest $request, $model): array
     {
         return static::fillFields(
             $request,
@@ -58,7 +58,7 @@ trait TabsOnEdit
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return \Laravel\Nova\Fields\FieldCollection
      */
-    public function creationFieldsWithoutReadonly(NovaRequest $request)
+    public function creationFieldsWithoutReadonly(NovaRequest $request): FieldCollection
     {
         return $this->parentCreationFields($request)
                     ->reject(function ($field) use ($request) {
@@ -115,7 +115,7 @@ trait TabsOnEdit
      * @param  \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
-    public static function rulesForUpdate(NovaRequest $request, $resource = null)
+    public static function rulesForUpdate(NovaRequest $request, $resource = null): array
     {
         $resource = $resource ?? self::newResource();
 
@@ -151,7 +151,7 @@ trait TabsOnEdit
      * @param  \Laravel\Nova\Fields\FieldCollection  $fields
      * @return \Laravel\Nova\Fields\FieldCollection
      */
-    protected function assignToPanels($label, FieldCollection $fields)
+    protected function assignToPanels($label, FieldCollection $fields): FieldCollection
     {
         return $fields->map(function ($field) use ($label) {
             if (!\is_array($field) && !$field->panel) {
@@ -166,7 +166,7 @@ trait TabsOnEdit
      * @param NovaRequest $request
      * @return Resource
      */
-    private function resolveResource(NovaRequest $request)
+    private function resolveResource(NovaRequest $request): Resource
     {
         if ($this instanceof Resource) {
             return $this;
@@ -180,7 +180,7 @@ trait TabsOnEdit
      * @param  \Laravel\Nova\Fields\FieldCollection $Fields
      * @return \Laravel\Nova\Fields\FieldCollection
      */
-    private function assignTabPanels(FieldCollection $fields)
+    private function assignTabPanels(FieldCollection $fields): FieldCollection
     {
         $tabPanels = [];
 

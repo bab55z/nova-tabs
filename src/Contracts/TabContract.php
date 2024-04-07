@@ -16,7 +16,7 @@ interface TabContract
      *
      * @return $this
      */
-    public function name(string $name);
+    public function name(string $name): TabContract;
 
     /**
      * A boolean or function that returns a boolean
@@ -29,7 +29,7 @@ interface TabContract
      *
      * @return $this
      */
-    public function showIf($condition);
+    public function showIf($condition): TabContract;
 
     /**
      * A boolean or function that returns a boolean
@@ -42,7 +42,7 @@ interface TabContract
      *
      * @return $this
      */
-    public function showUnless($condition);
+    public function showUnless($condition): TabContract;
 
     /**
      * Whether to show the title as HTML
@@ -54,7 +54,7 @@ interface TabContract
      *
      * @return $this
      */
-    public function titleAsHtml(bool $titleAsHtml);
+    public function titleAsHtml(bool $titleAsHtml): TabContract;
 
     /**
      * An icon to be put in front of the tab title
@@ -63,7 +63,7 @@ interface TabContract
      *
      * @return $this
      */
-    public function beforeIcon(string $iconAsHtml);
+    public function beforeIcon(string $iconAsHtml): TabContract;
 
     /**
      * An icon to be put behind of the tab title
@@ -72,7 +72,7 @@ interface TabContract
      *
      * @return $this
      */
-    public function afterIcon(string $iconAsHtml);
+    public function afterIcon(string $iconAsHtml): TabContract;
 
     /**
      * A string or string array of classes to put on the tab
@@ -80,7 +80,7 @@ interface TabContract
      * @param string|string[] $classes
      * @return $this
      */
-    public function tabClass($classes);
+    public function tabClass($classes): TabContract;
 
     /**
      * A string or string array of classes to put on the body
@@ -88,7 +88,7 @@ interface TabContract
      * @param string|string[] $classes
      * @return $this
      */
-    public function bodyClass($classes);
+    public function bodyClass($classes): TabContract;
 
     /**
      * Array representation of the tab

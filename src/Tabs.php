@@ -155,7 +155,7 @@ class Tabs extends Panel
      * @param  \Closure|array $fields
      * @return array
      */
-    protected function prepareFields($fields)
+    protected function prepareFields($fields): array
     {
         $this->convertFieldsToTabs($fields)
             ->filter(static function (Tab $tab): bool {

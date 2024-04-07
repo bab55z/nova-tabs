@@ -15,7 +15,7 @@ class FieldCollection extends NovaFieldCollection
      * @param  string  $type
      * @return \Eminiarts\Tabs\FieldCollection
      */
-    public function whereInstanceOf($type)
+    public function whereInstanceOf($type): FieldCollection
     {
         return $this->flatMap(function ($tab) use ($type) {
             return collect(Arr::get($tab, 'fields'))->whereInstanceOf($type);
