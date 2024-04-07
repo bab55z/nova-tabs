@@ -91,7 +91,7 @@ trait TabsOnEdit
     /**
      * @param NovaRequest $request
      */
-    public function parentUpdateFields(NovaRequest $request)
+    public function parentUpdateFields(NovaRequest $request): FieldCollection
     {
         return parent::updateFields($request);
     }
@@ -100,7 +100,7 @@ trait TabsOnEdit
      * @param  NovaRequest $request
      * @return mixed
      */
-    public static function rulesForCreation(NovaRequest $request)
+    public static function rulesForCreation(NovaRequest $request): array
     {
         return static::formatRules($request, (new static(static::newModel()))
                 ->parentCreationFields($request)
